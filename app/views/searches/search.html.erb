@@ -1,0 +1,42 @@
+<div class="container">
+  <% if @range == "User" %>
+    <table class = "table">
+      <thead>
+        <th>image</th>
+        <th>name</th>
+      </thead>
+
+      <% @users.each do |user| %>
+        <tbody>
+          <td><%= attachment_image_tag user, :profile_image, :fill, 40, 40, fallback: "No_image.jpg",size:'40x40' %></td>
+          <td><%= user.name %></td>
+        </tbody>
+      <% end %>
+      <% if @users.empty? %>
+        <div class="text-center">
+          <b>一致するユーザーはいません。</b>
+        </div>
+      <% end %>
+    </table>
+  <% else %>
+    <table class="table">
+      <thead>
+        <th></th>
+        <th>Title</th>
+        <th>Opinion</th>
+      </thead>
+      <% @books.each do |book| %>
+        <tbody>
+          <td><%= attachment_image_tag book.user, :profile_image, :fill, 50, 50, fallback: "No_image.jpg",size:'50x50' %></td>
+          <td><%= book.title %></td>
+          <td><%= book.body %></td>
+        </tbody>
+      <% end %>
+      <% if @books.empty? %>
+        <div class="text-center">
+          <b>一致するブックはありません。</b>
+        </div>
+      <% end %>
+    </table>
+  <% end %>
+</div>

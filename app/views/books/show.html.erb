@@ -1,0 +1,66 @@
+<div class="notice">
+	<%= notice %>
+</div>
+
+
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+
+<h2>User info</h2>
+<div class="user-edit-image">
+	<%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, fallback: "No_image.jpg" %>
+</div>
+
+<table class="table">
+	<tbody>
+		<tr>
+			<th>name</th><th><%= @book.user.name %></th>
+		</tr>
+		<tr>
+			<th>introduction</th><th><%= @book.user.introduction %></th>
+		</tr>
+	</tbody>
+</table>
+
+<% if @book.user == current_user %>
+<%= link_to "", edit_user_path(current_user), class: "glyphicon glyphicon-wrench btn btn-default w-100" %>
+<% else %>
+<%= link_to "", user_path(current_user), class: "glyphicon glyphicon-wrench btn btn-default" %>
+<% end %>
+
+
+<h2>New book</h2>
+<%= form_for(@booker) do |book| %>
+<p><b>Title</b></p>
+<%= book.text_field :title %>
+<p><b>Opinion</b></p>
+<%= book.text_area :body %><br>
+<button type="submit" class="btn btn-primary">Create Book </button>
+<% end %>
+</div>
+
+
+<div class="col-md-9">
+<h2>Book detail</h2>
+<div class="form-inline">
+<table class="table">
+	<tbody>
+		<tr>
+			<td><div class="user-edit-image"><%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, fallback: "No_image.jpg",size:'40x40' %></div>
+			<%= link_to @book.user.name %></td>
+			<td><%= @book.title %></td>
+			<td><%= @book.body %></td>
+		<% if @user == current_user %>
+			<td><%= link_to "edit", edit_book_path, class: 'btn btn-success' %></td>
+			<td><%= link_to "destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？", class: 'btn btn-danger' %></td>
+		<% else %>
+		<% end %>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+</div>
+</div>
+</div>

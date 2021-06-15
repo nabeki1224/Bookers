@@ -1,0 +1,38 @@
+<div class="container">
+<div class="row">
+<div class="col-lg-3">
+<h2>User info</h2>
+<% if @user.errors.any? %>
+  <div class="alert alert-warning">
+  	<p>error message</p>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="col-xs-3">
+<p><b>Name</b></p>
+</div>
+<div class="col-xs-9">
+<%= form_for(@user) do |f| %>
+<table>
+<%= f.text_field :name, autofocus: true, class:"form-control", id:"inputEmail", placeholder:"名前"%>
+</div>
+<div class="form-group has-icon">
+    <label class="control-label sr-only" for="inputEmail">ProfileImage</label>
+    <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "user-edit-form" %>
+</div>
+<p><b>Introduction</b></p>
+<%= f.text_area :introduction, class: 'form-control', placeholder:"50字以内" %>
+
+<%= f.submit 'Update User' %>
+<% end %>
+</div>
+</div>
+</div>
+</table>
+
+  <div class="col-xs-offset-9 copyright-top">CopyRight Infratop.inc</div>

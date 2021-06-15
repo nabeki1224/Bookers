@@ -1,0 +1,13 @@
+<h2>Editing Book</h2>
+<%= form_for(@book) do |f| %>
+<table>
+<p><b>Title</b></p>
+<%= f.text_field :title, autofocus: true, class:"form-control", id:"inputEmail", placeholder:"Title"%>
+</div>
+<p><b>Opinion</b></p>
+<%= f.text_area :body, class: 'form-control', placeholder:"Opinion" %>
+
+<%= f.submit 'Update Book' %>
+<% end %>
+
+<%= link_to "Show", book_path %>|<%= link_to "Back", books_path %>
