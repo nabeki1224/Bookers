@@ -42,6 +42,10 @@ ActiveRecord::Schema.define(version: 2021_06_15_172051) do
     t.string "name"
     t.text "introduction"
     t.string "profile_image_id"
+    t.integer "postcode"
+    t.integer "prefecture_code"
+    t.string "address_city"
+    t.string "address_street"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
