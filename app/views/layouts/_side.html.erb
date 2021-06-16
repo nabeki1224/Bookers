@@ -12,10 +12,10 @@
 			<th>introduction</th><th><%= user.introduction %></th>
 		</tr>
 		<tr>
-			<th>フォロー数：</th><th><%= link_to @user.followings.count, following_user_path(@user) %></th>
+			<th>フォロー数：</th><th><%= link_to user.followings.count, following_user_path(user) %></th>
 		</tr>
 		<tr>
-			<th>フォロワー数：</th><th><%= link_to @user.followers.count, follower_user_path(@user) %></th>
+			<th>フォロワー数：</th><th><%= link_to user.followers.count, follower_user_path(user) %></th>
 		</tr>
 	</tbody>
 </table>

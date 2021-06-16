@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'chats/show'
   root 'books#top'
   devise_for :users, controllers: {
     sessions: 'users/sessions',
@@ -18,5 +19,8 @@ Rails.application.routes.draw do
   end
   get '/search' => 'searches#search'
   resources :relationships, only:[:create, :destroy]
+  
+  get 'chat/:id' => 'chats#show', as: 'chat'
+  resources :chats, only: [:create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
