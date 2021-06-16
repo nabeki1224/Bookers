@@ -33,6 +33,19 @@ class UsersController < ApplicationController
     	session[:keep_signed_out] = true
     	redirect_to "/", notice:'Signed out successfully.'
     end
+
+		def following
+			@book = Book.new
+			@user = User.find(params[:id])
+			@users = @user.following
+		end
+
+		def follower
+			@book = Book.new
+			@user = User.find(params[:id])
+			@users = @user.followers
+		end
+
 	private
 	def book_params
 		params.require(:book).permit(:title, :body)
