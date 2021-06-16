@@ -37,7 +37,7 @@ class UsersController < ApplicationController
 		def following
 			@book = Book.new
 			@user = User.find(params[:id])
-			@users = @user.following
+			@users = @user.followings
 		end
 
 		def follower

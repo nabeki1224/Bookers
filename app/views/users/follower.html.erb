@@ -48,7 +48,7 @@
 					<%= attachment_image_tag user, :profile_image, :fill, 40, 40, fallback: "No_image.jpg",size:'40x40' %>
 				</div>
 			</td>
-			<td><%= user.name %></td>
+			<td><%= link_to user.name, user_path(user) %></td>
 			<td>
 				<% if user.id != current_user.id %>
 					<%= render 'follow/follow', user: user %>
