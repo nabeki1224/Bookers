@@ -12,16 +12,21 @@
 			<th>introduction</th><th><%= user.introduction %></th>
 		</tr>
 		<tr>
-			<th>フォロー数：</th><th><%= link_to @user.followings.count, following_user_path(@user) %></th>
+			<th>フォロー数：</th><th><%= link_to user.followings.count, following_user_path(user) %></th>
 		</tr>
 		<tr>
-			<th>フォロワー数：</th><th><%= link_to @user.followers.count, follower_user_path(@user) %></th>
+			<th>フォロワー数：</th><th><%= link_to user.followers.count, follower_user_path(user) %></th>
 		</tr>
 	</tbody>
 </table>
 
-
-<%= link_to "", edit_user_path(user), class: "glyphicon glyphicon-wrench btn btn-default w-100" %>
+<% if user.id == current_user.id %>
+	<%= link_to "", edit_user_path(user), class: "glyphicon glyphicon-wrench btn btn-default w-100" %>
+<% else %>
+	<div id = "follow_<%= user.id %>">
+		<%= render 'follow/follow', user: user %>
+	</div>
+<% end %>
 
 
 <h2>New book</h2>

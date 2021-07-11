@@ -23,7 +23,7 @@
 				</div>
 			</td>
 			<td><%= user.name %></td>
-			<td>
+			<td id = "follow_<%= user.id %>">
 				<% if user.id != current_user.id %>
 					<%= render 'follow/follow', user: user %>
 				<% end %>
